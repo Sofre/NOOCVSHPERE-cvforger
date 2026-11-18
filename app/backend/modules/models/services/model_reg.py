@@ -1,7 +1,7 @@
 from app.backend.modules.models.registry import ModelRegistry
 
 registry = ModelRegistry()
-
+# Registering service
 class ModelService:
 
     def __init__(self):
@@ -18,7 +18,7 @@ class ModelService:
         )
         return self.map(response)
 
-
+   # Return and map kwargs to show if outbound contract is correct
     def map(self, response):
         choice = response.choices[0]
         message = choice.message
