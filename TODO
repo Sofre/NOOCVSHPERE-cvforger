@@ -1,14 +1,61 @@
 OpenRouter supports reasoning-enabled models that can show their step-by-step thinking process. Use the reasoning parameter in your request to enable reasoning, and access the reasoning_details array in the response to see the model's internal reasoning before the final answer. When continuing a conversation, preserve the complete reasoning_details when passing messages back to the model so it can continue reasoning from where it left off. Learn more about reasoning tokens
 
 
-# Commands $env:PYTHONPATH='D:\Bekap star disk\CVSharpy\NOOCVSPHERE'; & 'C:\Users\Duki\miniconda3\envs\noosphere\python.exe' -m app.backend.modules.models.context.system
+# Chatbot (sh (context windo) + long(p memory) < = > agents(short-trm))  fallback solved should failure ask the chatbot head memory 
+
+
+
+# Commands $env:PYTHONPATH='D:\Bekap star disk\CVSharpy\NOOCVSPHERE'; & 'C:\Users\Duki\miniconda3\envs\noosphere\python.exe' -m app.backend.modules.models.context.task
 
 
 Context	Purpose	Example in CareerForge
-1. SystemContext	Global AI rules	Never fabricate candidate experience
-2. RoleContext	Agent identity and responsibilities	CV Builder Agent
-3. TaskContext	Current task and expected result	Generate a CV for a backend developer position
-4. KnowledgeContext	Information needed to perform the task	Candidate CV, job description, company information
-5. ConversationContext	Current conversation history	User asks to change the CV summary
+1. SystemContext	Global AI rules	Never fabricate candidate experience X 
+2. RoleContext	Agent identity and responsibilities	CV Builder Agent X 
+3. TaskContext	Current task and expected result	Generate a CV for a backend developer position -- Same but task definitont s
+4. KnowledgeContext	Information needed to perform the task	Candidate CV, job description, company information 
+5. ConversationContext	Current conversation history	From the convo chat bot 
 6. MemoryContext	Information retained across conversations	Preferred CV format and career preferences
 7. EnvironmentContext	Runtime conditions and available resources	Available tools, APIs, model and execution settings
+
+
+
+1. Phase 1 — Core Context
+Current phase
+Your objective is to make all context models constructible, validatable and usable.
+
+Models:
+- SystemContext
+- RoleContext
+- TaskContext
+- AgentContext
+- ConversationContext
+- MemoryContext
+- BaseContext
+Services:
+Service	Responsibility
+ContextBuilderService	Constructs and combines context models
+ContextMapperService	Converts context objects into unified dictionaries
+MessageMapperService	Converts context into LLM-compatible messages
+
+By the end, you should be able to construct the chatbot's complete context and map it into a valid structure.
+2. Phase 2 — Memory
+Your objective is to make memory functional and persistent.
+Service	Responsibility
+ShortTermMemoryService	Manages active conversation state
+LongTermMemoryService	Stores and retrieves persistent user information
+SemanticMemoryService	Indexes and retrieves knowledge using semantic search
+MemoryService	Coordinates the three memory components
+
+You can start with PostgreSQL for long-term memory and pgvector for semantic retrieval.
+
+Short-term memory can initially live in your conversation/session storage.
+3. Phase 3 — Chatbot integration and testing
+This is where you test whether your context and memory architecture actually works.
+
+I'd implement:
+Service	Responsibility
+ChatInputService	Receives and validates user messages
+ChatbotInterpreterService	Interprets user intent and actions
+ChatbotService	Coordinates context, memory and LLM interaction
+ConversationService	Maintains conversation history
+ResponseMapperService	Normalizes LLM responses

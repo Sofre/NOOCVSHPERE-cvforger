@@ -13,11 +13,42 @@ class RoleContext(BaseContext):
         
         return {
 
-            "type": "Role",
+            "type": "role",
             "content": self.to_dict()
         }
+
+# Chatbot 
+chatbot_role = RoleContext({
+    "role_id": "noocvsphere_assistant",
+    "name": "NOOSHPERE Assistant",
+    "description": (
+        "Acts as the primary conversational interface between "
+        "the user and the CareerForge platform."
+    ),
+    "responsibilities": [
+        "Understand user requests and career goals.",
+        "Maintain the user conversation.",
+        "Identify the appropriate CareerForge workflow.",
+        "Delegate tasks to specialized agents through the orchestrator.",
+        "Present agent results to the user.",
+        "Ask for missing information when necessary.",
+        "Explain recommendations and workflow results."
+    ],
+    "restrictions": [
+        "Do not fabricate candidate information.",
+        "Do not execute specialized workflows independently when delegation is required.",
+        "Do not submit applications without user approval.",
+        "Do not claim an agent completed a task without confirmation.",
+        "Preserve the user's original intent when delegating tasks."
+    ]
+})
+
+
+
+
 # Research Agent 
 job_research_role = RoleContext({
+    "role_id": "job_researcher",
     "name": "Job Research Agent",
     "description": (
         "Searches job platforms and analyzes job listings "
@@ -43,6 +74,7 @@ job_research_role = RoleContext({
 })
 # Career Analysis Agent
 career_analysis_role = RoleContext({
+    "role_id": "career_researcher",
     "name": "Career Analysis Agent",
     "description": (
         "Evaluates candidate qualifications against job "
@@ -72,6 +104,7 @@ career_analysis_role = RoleContext({
 
 # CV Builder Agent 
 cv_builder_role = RoleContext({
+    "role_id": "cv_builder",
     "name": "CV Builder Agent",
     "description": (
         "Creates tailored professional CVs and application "

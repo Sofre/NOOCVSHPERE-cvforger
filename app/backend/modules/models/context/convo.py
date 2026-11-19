@@ -27,11 +27,11 @@ convo = ConvoContext({
     "messages": [
         {
             "role": "user",
-            "content": "Help me improve my CV."
+            "content": "Help me improve my CV." # input maped out
         },
         {
             "role": "assistant",
-            "content": "Let's start with your experience."
+            "content": "Let's start with your experience." # idk 
         }
     ],
     "metadata": {

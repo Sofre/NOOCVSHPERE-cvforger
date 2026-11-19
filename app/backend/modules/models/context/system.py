@@ -46,7 +46,6 @@ system = SystemContext({
 
 
 result = system.build()
-printableresutl = self.contet 
+
 print(result)
 print(result["type"])
-print(printableresult)

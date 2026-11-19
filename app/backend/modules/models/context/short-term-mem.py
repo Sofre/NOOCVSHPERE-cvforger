@@ -22,3 +22,17 @@ class Short_TermMemoryContext(BaseContext):
 #   "active_task": "Analyze and rewrite backend experience section", -- same with first one 
 #    "recent_decisions": [],
 #    "temporary_facts": []
+
+
+shortmem = Short_TermMemoryContext({
+
+        "current_goal" : str # extract from chatbot intrperation
+        "active_task" : str # Extract from chatbot intreprtaion
+        "status_active_task" : bool # is it active currently
+        "recent_decisions": []
+        "temporary_facts": []
+        
+
+
+
+})
