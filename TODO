@@ -59,3 +59,12 @@ ChatbotInterpreterService	Interprets user intent and actions
 ChatbotService	Coordinates context, memory and LLM interaction
 ConversationService	Maintains conversation history
 ResponseMapperService	Normalizes LLM responses
+
+
+
+Orchestration -- LangGraph 
+
+
+
+# Time: X
+# Promt -> Interpetar Service -> return to Contexts filled ->build all -> return build instances and build template Core context -> OUTPUT FROM CHATBOT 

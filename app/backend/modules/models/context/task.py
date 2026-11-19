@@ -91,7 +91,7 @@ tasks = TaskContext({
         "task_id": "present_results",
         "role_id": "nosphere_assistant",
         "objective": (
-              "Validate specialized agent results against "
+            "Validate specialized agent results against "
             "the original request and present the verified "
             "results to the user."
         ),

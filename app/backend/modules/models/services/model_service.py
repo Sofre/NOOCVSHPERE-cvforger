@@ -1,4 +1,4 @@
-from app.backend.modules.models.registry import ModelRegistry
+from app.backend.modules.models.services.model_registry import ModelRegistry
 
 registry = ModelRegistry()
 # Registering service

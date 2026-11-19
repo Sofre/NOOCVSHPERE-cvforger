@@ -131,3 +131,15 @@ cv_builder_role = RoleContext({
         "Flag missing information instead of making assumptions."
     ]
 })
+
+
+ROLES = {
+    role.content["role_id"]: role
+    for role in [
+        chatbot_role,
+        job_research_role,
+        career_analysis_role,
+        cv_builder_role
+    ]
+}
+
