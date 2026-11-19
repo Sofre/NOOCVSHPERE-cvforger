@@ -1,20 +1,12 @@
 from .base import BaseContext
 
 class RoleContext(BaseContext):
-
-    def __init__(self,content:dict):
-        super().__init__(content)
-
     def build(self) -> dict:
-
         if not self.validate():
             raise ValueError("Invalid role context")
-
-        
         return {
-
             "type": "role",
-            "content": self.to_dict()
+            "content": self.to_dict(),
         }
 
 # Chatbot 

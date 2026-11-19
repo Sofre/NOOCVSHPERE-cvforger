@@ -1,20 +1,12 @@
 from .base import BaseContext
 
 class SystemContext(BaseContext):
-
-    def __init__(self,content:dict):
-        super().__init__(content)
-
     def build(self) -> dict:
-
         if not self.validate():
             raise ValueError("Invalid system context")
-
-        
         return {
-
             "type": "System",
-            "content": self.to_dict()
+            "content": self.to_dict(),
         }
 
 
@@ -43,9 +35,3 @@ system = SystemContext({
         "does not support it."
     ]
 })
-
-
-result = system.build()
-
-print(result)
-print(result["type"])

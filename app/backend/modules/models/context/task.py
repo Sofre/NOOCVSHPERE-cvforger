@@ -1,29 +1,21 @@
 from .base import BaseContext
 
 class TaskContext(BaseContext):
-    
-    def __init__(self,content:dict):
-        super().__init__(content)
-
     def build(self) -> dict:
-
-        # validate first
-        
         if not self.validate():
-            raise ValueError("Invalid content")
-
-        return{
-            "type" : "tasks",
-            "content" : self.to_dict()
+            raise ValueError("Invalid task context")
+        return {
+            "type": "tasks",
+            "content": self.to_dict(),
         }
 
-# Tasks - Using identifers to map out each task per role// Tasks have Objectives, inputs and expected outputs 
+# Tasks map each task to a role, its inputs, objective, and expected output.
 tasks = TaskContext({
     
         # Chatbot  - understand user request
     "understand_user_request": {
         "task_id": "understand_user_request",
-        "role_id": "nosphere_assistant",
+        "role_id": "noocvsphere_assistant",
         "objective": (
             "Interpret the user's message in the context "
             "of the ongoing conversation and identify "
@@ -40,14 +32,14 @@ tasks = TaskContext({
         # Chatbot - identify which workflow he wants and agents to be activated
     "identify_workflow": {
         "task_id": "identify_workflow",
-        "role_id": "nosphere_assistant",
+        "role_id": "noocvsphere_assistant",
         "objective": (
             "Determine which workflow and specialized agents "
             "are required to fulfill the user's request."
         ),
         "inputs": [
             "user_intent",
-            "conversation_history"
+            "conversation_history",
             "available_workflows",
             "available_agents"
         ],
@@ -56,7 +48,7 @@ tasks = TaskContext({
         # Chatbot - collect the information from the user 
     "collect_user_information": {
         "task_id": "collect_user_information",
-        "role_id": "nosphere_assistant",
+        "role_id": "noocvsphere_assistant",
         "objective": (
              "Identify missing or insufficient information "
             "required to execute the selected workflow and "
@@ -72,7 +64,7 @@ tasks = TaskContext({
         # Chatbot - prepare to deleagte instructions to the agents
     "prepare_delegation": {
         "task_id": "prepare_delegation",
-        "role_id": "nosphere_assistant",
+        "role_id": "noocvsphere_assistant",
         "objective": (
             "Prepare the delegation instructions, required "
             "inputs, relevant context and expected outputs "
@@ -89,7 +81,7 @@ tasks = TaskContext({
         # Chatbot - validate and present results
     "present_results": {
         "task_id": "present_results",
-        "role_id": "nosphere_assistant",
+        "role_id": "noocvsphere_assistant",
         "objective": (
             "Validate specialized agent results against "
             "the original request and present the verified "
@@ -105,7 +97,7 @@ tasks = TaskContext({
         # Chatbot - manage a followup request 
     "manage_follow_up": {
         "task_id": "manage_follow_up",
-        "role_id": "nosphere_assistant",
+        "role_id": "noocvsphere_assistant",
         "objective": (
             "Interpret follow-up requests using the existing "
             "conversation state and previous workflow results "
@@ -123,7 +115,7 @@ tasks = TaskContext({
         # Job Search Agent - Search Jobs 
     "search_jobs": {
     "task_id": "search_jobs",
-    "role_id": "job_research",
+    "role_id": "job_researcher",
     "objective": "Discover job opportunities using the candidate's search criteria.",
     "inputs": [
         "job_title",
@@ -138,7 +130,7 @@ tasks = TaskContext({
           # Job Search Agent - Analyzie lisitng
     "analyze_job_listing": {
         "task_id": "analyze_job_listing",
-        "role_id": "job_research",
+        "role_id": "job_researcher",
         "objective": "Extract structured information from a job listing.",
         "inputs": [
             "job_listing"
@@ -148,7 +140,7 @@ tasks = TaskContext({
               # Job Search Agent  - filter job by user pref
     "filter_job_listings": {
         "task_id": "filter_job_listings",
-        "role_id": "job_research",
+        "role_id": "job_researcher",
         "objective": "Filter job listings according to candidate preferences.",
         "inputs": [
             "job_listings",
@@ -160,7 +152,7 @@ tasks = TaskContext({
               # CV analysis Agent - anlyize the cv as actuall facts
         "analyze_candidate": {
         "task_id": "analyze_candidate",
-        "role_id": "career_analysis",
+        "role_id": "career_researcher",
         "objective": "Analyze and structure the candidate's professional qualifications.",
         "inputs": [
             "candidate_cv"
@@ -170,7 +162,7 @@ tasks = TaskContext({
           # CV analysis Agent - compare candidate qualifactions against job reqirments
     "compare_candidate": {
         "task_id": "compare_candidate",
-        "role_id": "career_analysis",
+        "role_id": "career_researcher",
         "objective": "Compare candidate qualifications against job requirements.",
         "inputs": [
             "candidate_profile",
@@ -181,7 +173,7 @@ tasks = TaskContext({
           # CV analysis Agent 
     "identify_skill_gaps": {
         "task_id": "identify_skill_gaps",
-        "role_id": "career_analysis",
+        "role_id": "career_researcher",
         "objective": "Identify missing or insufficient candidate qualifications.",
         "inputs": [
             "candidate_profile",
@@ -192,7 +184,7 @@ tasks = TaskContext({
     # CV analysis ATS Score
     "evaluate_ats_compatibility": {
     "task_id": "evaluate_ats_compatibility",
-    "role_id": "career_analysis",
+    "role_id": "career_researcher",
     "objective": (
         "Evaluate the candidate's CV against the job listing "
         "based on keyword relevance, required skills, "
@@ -243,11 +235,4 @@ tasks = TaskContext({
     }
 
 })
-
-
-
-result = tasks.build()
-
-print(result)
-print(result["type"])
 
