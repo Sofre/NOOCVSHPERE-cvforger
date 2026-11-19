@@ -18,7 +18,7 @@ class ModelService:
         )
         return self.map(response)
 
-   # Return and map kwargs to show if outbound contract is correct
+   # Return and map kwargs to show if outbound contract is correct -- will be patched
     def map(self, response):
         choice = response.choices[0]
         message = choice.message
