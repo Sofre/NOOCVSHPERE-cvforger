@@ -64,6 +64,8 @@ ChatbotService	Coordinates context, memory and LLM interaction
 ConversationService	Maintains conversation history
 ResponseMapperService	Normalizes LLM responses
 
+POSTGRES X
+vector 0
 
 
 Orchestration -- LangGraph 
